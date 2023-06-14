@@ -1,0 +1,27 @@
+name: 'Update and Push File'
+description: 'Update a file with github secrets and push to server using SFTP'
+inputs:
+  file:  # id of input
+    description: 'File to be updated'
+    required: true
+  tokenPattern:
+    required: true
+    description: A pattern to match tokens. Must contain the word TOKEN. e.g. '#{TOKEN}#', '${TOKEN}', '<<<TOKEN>>>'...
+  secretsJson:
+    description: 'JSON representaion of the secrets'
+    required: true
+  sftpHost:
+    description: 'Host for the sftp server'
+    required: true
+  sftpUsername:
+    description: 'Username for the sftp server'
+    required: true
+  sftpRsaKey:
+    description: 'RSA key for the sftp server'
+    required: true
+  sftpFile:
+    description: 'Path to the file to be updated on the server'
+    required: true
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
